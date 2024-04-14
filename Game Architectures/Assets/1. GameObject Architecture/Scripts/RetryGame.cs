@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RetryGame : MonoBehaviour
+namespace Architectures.GameObjectComponent
 {
-    public void ReloadScene()
+    public class RetryGame : MonoBehaviour
     {
-        SceneManager.LoadSceneAsync("MainScene");
-        SceneManager.UnloadSceneAsync("UIScene");
+        public void ReloadScene()
+        {
+            SceneManager.LoadSceneAsync("MainScene");
+            SceneManager.UnloadSceneAsync("UIScene");
+        }
     }
 }

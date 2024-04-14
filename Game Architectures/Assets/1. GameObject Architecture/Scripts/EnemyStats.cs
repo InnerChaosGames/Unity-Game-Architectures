@@ -31,6 +31,7 @@ namespace Architectures.GameObjectComponent
         {
             RaiseDeathEvent();
             Destroy(gameObject);
+            AudioManager.Instance.PlaySound("deathSFX");
         }
     }
 }

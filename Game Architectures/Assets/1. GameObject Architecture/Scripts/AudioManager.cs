@@ -1,38 +1,18 @@
 using Architectures.GameObjectComponent;
+using DesignPatterns.Singleton;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField]
     private List<AudioSource> audioSources = new List<AudioSource>();
 
     [SerializeField]
-    private AudioClip deathAudioClip;
-
-    private EnemySpawner spawner;
-
-    private void Awake()
-    {
-        spawner = GetComponent<EnemySpawner>();
-        spawner.OnEnemySpawned += HandleEnemySpawned;
-    }
-
-    private void HandleEnemySpawned(EnemyStats enemy)
-    {
-        enemy.OnDeath += OnEnemyDeath;
-    }
-
-    private void OnEnemyDeath(Stats stats)
-    {
-        var source = GetFreeAudioSource();
-        if (source != null)
-        {
-            source.clip = deathAudioClip;
-            source.Play();
-        }
-    }
+    private List<string> soundNames;
+    [SerializeField]
+    private List<AudioClip> audioClips;
 
     private AudioSource GetFreeAudioSource()
     {
@@ -44,5 +24,15 @@ public class AudioManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void PlaySound(string soundName)
+    {
+        AudioSource source = GetFreeAudioSource();
+
+        int index = soundNames.IndexOf(soundName);
+
+        source.clip = audioClips[index];
+        source.Play();
     }
 }

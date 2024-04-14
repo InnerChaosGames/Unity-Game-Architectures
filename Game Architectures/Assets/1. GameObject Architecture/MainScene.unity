@@ -244,12 +244,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263445784}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 980.98254, y: 643.9805, z: 3.7671688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1716108999}
+  m_Father: {fileID: 1021521971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &338010295
 GameObject:
@@ -372,12 +372,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338010295}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 980.98254, y: 643.9805, z: 3.7671688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1716108999}
+  m_Father: {fileID: 1021521971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &666532306
 GameObject:
@@ -721,12 +721,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828534945}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 980.98254, y: 643.9805, z: 3.7671688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1716108999}
+  m_Father: {fileID: 1021521971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &830825990
 GameObject:
@@ -849,12 +849,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830825990}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 980.98254, y: 643.9805, z: 3.7671688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1716108999}
+  m_Father: {fileID: 1021521971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920538174
 GameObject:
@@ -933,6 +933,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1021521971}
+  - component: {fileID: 1021521972}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -952,9 +953,34 @@ Transform:
   m_LocalPosition: {x: -1.7189217, y: -0.77783155, z: -0.030371048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 828534947}
+  - {fileID: 338010297}
+  - {fileID: 263445786}
+  - {fileID: 830825992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1021521972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021521970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9013ab4fa6fca40a9381c9ba3771cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources:
+  - {fileID: 828534946}
+  - {fileID: 338010296}
+  - {fileID: 263445785}
+  - {fileID: 830825991}
+  soundNames:
+  - deathSFX
+  audioClips:
+  - {fileID: 8300000, guid: 6f17fb40a02cfa244b6cfb34b6926a21, type: 3}
 --- !u!1 &1186335273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1296,6 @@ GameObject:
   - component: {fileID: 1716108999}
   - component: {fileID: 1716108998}
   - component: {fileID: 1716109000}
-  - component: {fileID: 1716109001}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1302,11 +1327,7 @@ Transform:
   m_LocalPosition: {x: 979.2636, y: 643.2027, z: 3.7367978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 828534947}
-  - {fileID: 338010297}
-  - {fileID: 263445786}
-  - {fileID: 830825992}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1716109000
@@ -1326,24 +1347,6 @@ MonoBehaviour:
   minMaxSpawnPerWave: {x: 1, y: 8}
   minMaxWidth: {x: -10, y: 10}
   minMaxHeight: {x: -6, y: 6}
---- !u!114 &1716109001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716108997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c9013ab4fa6fca40a9381c9ba3771cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSources:
-  - {fileID: 828534946}
-  - {fileID: 338010296}
-  - {fileID: 263445785}
-  - {fileID: 830825991}
-  deathAudioClip: {fileID: 8300000, guid: 6f17fb40a02cfa244b6cfb34b6926a21, type: 3}
 --- !u!1 &1889578256
 GameObject:
   m_ObjectHideFlags: 0

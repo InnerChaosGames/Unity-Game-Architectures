@@ -42,6 +42,7 @@ namespace Architectures.GameObjectComponent
                 IHaveStats stats = player.GetComponent<IHaveStats>();
                 stats.TakeDamage(enemyStats.Damage);
                 Destroy(gameObject);
+                AudioManager.Instance.PlaySound("deathSFX");
             }
         }
     }
