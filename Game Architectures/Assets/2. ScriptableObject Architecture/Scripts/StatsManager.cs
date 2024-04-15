@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Architectures.ScriptableObjects
         [field: SerializeField]
         public int CurrentHealth { get ; private set; }
 
+        public event Action OnDeath;
         public StatsSO Stats { get => stats; }
 
         private void Awake()
@@ -36,6 +38,7 @@ namespace Architectures.ScriptableObjects
          
         private void Die()
         {
+            OnDeath?.Invoke();
             onDeath?.Raise(null);
             Destroy(gameObject);
         }

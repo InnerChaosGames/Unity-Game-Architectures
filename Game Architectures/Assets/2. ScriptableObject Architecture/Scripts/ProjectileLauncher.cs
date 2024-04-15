@@ -77,7 +77,7 @@ namespace Architectures.ScriptableObjects
                 projectile.transform.SetPositionAndRotation(projectileSpawnPos.position, projectileSpawnPos.rotation);
                 projectile.GetComponent<Rigidbody2D>().AddForce(projectile.transform.right * projectileForce);
 
-               // projectile.Shoot();
+                projectile.Shoot();
 
                 shootTime = Time.time;
             }
