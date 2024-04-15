@@ -6,12 +6,15 @@ namespace Architectures.ScriptableObjects
 {
     public class Player : MonoBehaviour
     {
+        [Header("Scriptable Objects")]
         [SerializeField]
         private InputReader input;
+        [SerializeField]
+        private Vector3VariableSO playerPosition;
 
+        [Header("Settings")]
         [SerializeField]
         private Transform gunPivot;
-
 
         [SerializeField]
         private float speed;
@@ -56,6 +59,7 @@ namespace Architectures.ScriptableObjects
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             gunPivot.rotation = rotation;
+            playerPosition.value = transform.position;
         }
 
         private void FixedUpdate()

@@ -15,7 +15,7 @@ namespace Architectures.ScriptableObjects
 
         public event UnityAction<Vector2> MoveEvent;
         public event UnityAction<Vector2> AimEvent;
-        public event UnityAction FireEvent;
+        public event UnityAction<bool> FireEvent;
 
         private InputActions actions;
 
@@ -46,7 +46,11 @@ namespace Architectures.ScriptableObjects
         {
             if (FireEvent != null && context.started)
             {
-                FireEvent?.Invoke();
+                FireEvent?.Invoke(true);
+            }
+            if (FireEvent != null && context.canceled)
+            {
+                FireEvent?.Invoke(false);
             }
         }
 

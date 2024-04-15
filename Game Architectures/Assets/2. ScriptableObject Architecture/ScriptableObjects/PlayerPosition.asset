@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a09164515bcaf254aab4de1d4edeb9cf, type: 3}
-  m_Name: EnemyStats
+  m_Script: {fileID: 11500000, guid: ebd69a6d22707df47a7e88cc3e80e9dc, type: 3}
+  m_Name: PlayerPosition
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Enemy
-  <Health>k__BackingField: 50
-  <CurrentHealth>k__BackingField: 50
-  <Damage>k__BackingField: 20
+  value: {x: 0, y: 0, z: 0}

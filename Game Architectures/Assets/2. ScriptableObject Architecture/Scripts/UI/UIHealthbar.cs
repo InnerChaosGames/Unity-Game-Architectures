@@ -7,15 +7,25 @@ namespace Architectures.ScriptableObjects
 {
     public class UIHealthbar : MonoBehaviour
     {
-        [SerializeField]
-        private Image healthBar;
-
+        [Header("Scriptable Object")]
         [SerializeField]
         private StatsSO playerStats;
 
-        public void UpdateHealthbar()
+        [Header("Settings")]
+        [SerializeField]
+        private Image healthBar;
+
+        private int currentHealth;
+
+        private void Start()
         {
-            float value = playerStats.CurrentHealth / playerStats.Health;
+            UpdateHealthbar(playerStats.Health);
+            currentHealth = playerStats.Health;
+        }
+
+        public void UpdateHealthbar(int currentHealth)
+        {
+            float value = (float)currentHealth / (float)playerStats.Health;
             healthBar.fillAmount = value;
         }
     }

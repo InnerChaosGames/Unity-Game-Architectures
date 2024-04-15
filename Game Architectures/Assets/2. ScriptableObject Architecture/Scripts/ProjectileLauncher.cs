@@ -10,9 +10,13 @@ namespace Architectures.ScriptableObjects
 {
     public class ProjectileLauncher : MonoBehaviour
     {
+        [Header("Scriptable Objects")]
         [SerializeField]
         private InputReader input;
+        [SerializeField]
+        private StatsSO playerStats;
 
+        [Header("Other Settings")]
         [SerializeField]
         private Projectile projectilePrefab;
         [SerializeField]
@@ -28,27 +32,37 @@ namespace Architectures.ScriptableObjects
         [SerializeField]
         private int maxSize = 100;
 
-        private IHaveStats playerStats;
-
         private IObjectPool<Projectile> projectilePool;
 
         private float shootTime;
+        private bool isFiring;
 
         private void OnEnable()
         {
-            input.FireEvent += FireProjectile;
+            input.FireEvent += OnProjectileButton;
         }
 
         private void OnDisable()
         {
-            input.FireEvent -= FireProjectile;
+            input.FireEvent -= OnProjectileButton;
         }
 
         private void Awake()
         {
-            playerStats = GetComponent<IHaveStats>();
-
             projectilePool = new ObjectPool<Projectile>(CreateProjectile, OnGetFromPool, OnReleaseToPool, DestroyPooledObject, true, defaultCapacity, maxSize);
+        }
+
+        private void OnProjectileButton(bool isFiring)
+        {
+            this.isFiring = isFiring;
+        }
+
+        private void Update()
+        {
+            if (isFiring)
+            {
+                FireProjectile();
+            }
         }
 
         private void FireProjectile()
@@ -72,7 +86,7 @@ namespace Architectures.ScriptableObjects
         private Projectile CreateProjectile()
         {
             Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPos.position, Quaternion.identity);
-            //projectile.Init(playerStats.Damage, projectilePool);
+            projectile.Init(playerStats.Damage, projectilePool);
             return projectile;
         }
 

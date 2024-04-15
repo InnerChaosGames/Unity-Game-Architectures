@@ -7,30 +7,32 @@ namespace Architectures.ScriptableObjects
     public class EnemyController : MonoBehaviour
     {
         [SerializeField]
-        StatsSO enemyStats;
+        private IntGameEvent onDamagePlayer;
+        [SerializeField]
+        private Vector3VariableSO playerPosition;
 
         [SerializeField]
         private float speed = 4;
 
-        [SerializeField]
-        private Transform player;
+        private StatsManager statsManager;
 
 
-        public void Init(Transform playerTransform)
+        public void Init(Vector3VariableSO playerPos)
         {
-            player = playerTransform;
+            playerPosition = playerPos;
         }
 
         private void Awake()
         {
+            statsManager = GetComponent<StatsManager>();
         }
 
         private void Update()
         {
-            if (player != null)
+            if (playerPosition != null)
             {
                 float step = speed * Time.deltaTime;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, step);
+                transform.position = Vector2.MoveTowards(transform.position, playerPosition.value, step);
             }
         }
 
@@ -38,10 +40,8 @@ namespace Architectures.ScriptableObjects
         {
             if (collision.CompareTag("Player"))
             {
-                StatsManager stats = player.GetComponent<StatsManager>();
-                stats.TakeDamage(enemyStats.Damage);
+                onDamagePlayer.Raise(statsManager.Stats.Damage);
                 Destroy(gameObject);
-                AudioManager.Instance.PlaySound("deathSFX");
             }
         }
     }

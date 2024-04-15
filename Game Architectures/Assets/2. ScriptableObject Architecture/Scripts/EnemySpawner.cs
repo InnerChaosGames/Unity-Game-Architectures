@@ -1,12 +1,18 @@
+using Architectures.GameObjectComponent;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Architectures.GameObjectComponent
+namespace Architectures.ScriptableObjects
 {
     public class EnemySpawner : MonoBehaviour
     {
+        [Header("Scriptable Objects")]
+        [SerializeField]
+        private Vector3VariableSO playerPosition;
+
+        [Header("Other Settings")]
         [SerializeField]
         private EnemyController enemyPrefab;
 
@@ -20,18 +26,7 @@ namespace Architectures.GameObjectComponent
         [SerializeField]
         private Vector2 minMaxHeight = new Vector2(-6, 6);
 
-        private Transform playerTransform;
         private float currentTime;
-
-        public event Action<int> OnEnemyDied;
-
-        public Transform PlayerTransform { get => playerTransform; }
-
-        // Start is called before the first frame update
-        void Awake()
-        {
-            playerTransform = FindObjectOfType<PlayerMovement>().transform;
-        }
 
         private void Start()
         {
@@ -62,28 +57,22 @@ namespace Architectures.GameObjectComponent
                 {
                     case 0:
                         spawnPos = new Vector2(minMaxWidth.x, UnityEngine.Random.Range(minMaxHeight.x, minMaxHeight.y));
-                    break;
+                        break;
                     case 1:
                         spawnPos = new Vector2(minMaxWidth.y, UnityEngine.Random.Range(minMaxHeight.x, minMaxHeight.y));
                         break;
                     case 2:
                         spawnPos = new Vector2(UnityEngine.Random.Range(minMaxWidth.x, minMaxWidth.y), minMaxHeight.x);
-                    break;
+                        break;
                     case 3:
                         spawnPos = new Vector2(UnityEngine.Random.Range(minMaxWidth.x, minMaxWidth.y), minMaxHeight.y);
                         break;
                 }
 
                 var enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-                enemy.Init(playerTransform);
+                enemy.Init(playerPosition);
                 var enemyStats = enemy.GetComponent<EnemyStats>();
-                enemyStats.OnDeath += EnemyDied;
             }
-        }
-
-        private void EnemyDied(Stats enemy)
-        {
-            OnEnemyDied?.Invoke(((EnemyStats)enemy).Score);
         }
     }
 }

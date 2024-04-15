@@ -2,25 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatsManager : MonoBehaviour
+namespace Architectures.ScriptableObjects
 {
-    [SerializeField]
-    StatsSO stats;
-    [SerializeField]
-    private GameEventSO damageTake;
-
-    private void Awake()
+    public class StatsManager : MonoBehaviour
     {
-        stats.DeathEvent += PlayerDied;
-    }
+        [Header("Scriptable Objects")]
+        [SerializeField]
+        private StatsSO stats;
+        [SerializeField]
+        private IntGameEvent healthValueChanged;
+        [SerializeField]
+        private SimpleGameEvent onDeath;
 
-    public void TakeDamage(int damage)
-    {
-        stats.TakeDamage(damage);
-    }
+        [field: SerializeField]
+        public int CurrentHealth { get ; private set; }
 
-    private void PlayerDied()
-    {
+        public StatsSO Stats { get => stats; }
 
+        private void Awake()
+        {
+            CurrentHealth = stats.Health;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            CurrentHealth -= damage;
+            healthValueChanged?.Raise(CurrentHealth);
+            if (CurrentHealth <= 0)
+            {
+                Die();
+            }
+        }
+         
+        private void Die()
+        {
+            onDeath?.Raise(null);
+            Destroy(gameObject);
+        }
     }
 }
