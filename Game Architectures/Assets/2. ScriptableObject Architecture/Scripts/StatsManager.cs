@@ -14,7 +14,6 @@ namespace Architectures.ScriptableObjects
         private IntGameEvent healthValueChanged;
         [SerializeField]
         private SimpleGameEvent onDeath;
-
         [field: SerializeField]
         public int CurrentHealth { get ; private set; }
 

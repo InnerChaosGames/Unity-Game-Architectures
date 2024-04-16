@@ -155,6 +155,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 69ea3cda3e5648b4987fe9af8be4340f, type: 2}
   healthValueChanged: {fileID: 11400000, guid: ccbda9353a2986b49a6ec5c0ea9e4642, type: 2}
   onDeath: {fileID: 11400000, guid: 63371d67844e05c47bf8e8697d3dcb18, type: 2}
+  runtimeStats: {fileID: 11400000, guid: c6a518b00be4c5e439cee8d2ade0a4f3, type: 2}
   <CurrentHealth>k__BackingField: 0
 --- !u!114 &8993712733586994681
 MonoBehaviour:

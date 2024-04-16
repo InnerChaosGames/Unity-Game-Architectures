@@ -1,4 +1,3 @@
-using Architectures.GameObjectComponent;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +10,10 @@ namespace Architectures.ScriptableObjects
         [Header("Scriptable Objects")]
         [SerializeField]
         private Vector3VariableSO playerPosition;
+        [SerializeField]
+        private EnemyStatsRuntimeSet runtimeEnemyStats;
+        [SerializeField]
+        private SimpleGameEvent enemiesSpawnedEvent;
 
         [Header("Other Settings")]
         [SerializeField]
@@ -46,6 +49,8 @@ namespace Architectures.ScriptableObjects
 
         private void SpawnWave()
         {
+            runtimeEnemyStats.RemoveAll();
+
             int spawnCount = UnityEngine.Random.Range(minMaxSpawnPerWave.x, minMaxSpawnPerWave.y);
             print("Spawn");
             for (int i = 0; i < spawnCount; i++)
@@ -71,8 +76,11 @@ namespace Architectures.ScriptableObjects
 
                 var enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
                 enemy.Init(playerPosition);
-                var enemyStats = enemy.GetComponent<EnemyStats>();
+                var enemyStats = enemy.GetComponent<StatsManager>();
+                runtimeEnemyStats.Add(enemyStats);
             }
+
+            enemiesSpawnedEvent.Raise(null);
         }
     }
 }
