@@ -1,27 +1,26 @@
+using Architectures.ScriptableObjects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Architectures.ScriptableObjects
 {
-    public class EnemyParticles : MonoBehaviour
+    public class EnemySounds : MonoBehaviour
     {
         [SerializeField]
-        private VFXManagerSO vfxManager;
-        [SerializeField]
-        private string deathVFX;
+        private AudioManagerSO audioManager;
 
         private StatsManager statsManager;
 
         private void Awake()
         {
             statsManager = GetComponent<StatsManager>();
-            statsManager.OnDeath += PlayParticles;
+            statsManager.OnDeath += PlaySound;
         }
 
-        public void PlayParticles()
+        public void PlaySound()
         {
-            vfxManager.PlaySFXClip(deathVFX, transform.position);
+            audioManager.PlaySFXClip("deathSFX", transform.position);
         }
     }
 }

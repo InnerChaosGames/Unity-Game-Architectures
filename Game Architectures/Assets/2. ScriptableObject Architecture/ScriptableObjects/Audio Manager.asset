@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9edd114a1c3a1a40aea680bd8cbf225, type: 3}
   m_Name: Audio Manager
   m_EditorClassIdentifier: 
+  soundVolume: 1
+  audioClips:
+  - {fileID: 8300000, guid: 6f17fb40a02cfa244b6cfb34b6926a21, type: 3}
+  clipNames:
+  - deathSFX
   SoundObject: {fileID: 7546219023227103994, guid: 6a41fcb8fdab0b545abb3685f3d27f1e, type: 3}

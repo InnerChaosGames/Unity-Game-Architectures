@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 6328458081743040405}
   - component: {fileID: 2088123185657070037}
   - component: {fileID: 8993712733586994681}
-  - component: {fileID: 4608463265146570006}
+  - component: {fileID: 7435746736507489436}
+  - component: {fileID: 6173092151036596616}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -169,7 +170,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateScore: {fileID: 11400000, guid: 45a5a1b8ad12a9c4295c6effaa8b7e89, type: 2}
   scoreValue: 300
---- !u!114 &4608463265146570006
+--- !u!114 &7435746736507489436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644495393191674979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0ab5b2e3dbd8d4ab2e4a8fc8c994ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManager: {fileID: 11400000, guid: 55eb828922c97284cab0c38028808d85, type: 2}
+--- !u!114 &6173092151036596616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,4 +195,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d28574759832e46b4985ae72817441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlesPrefab: {fileID: 6803637611666872394, guid: 24eddd4d4a056c6499263bcb86bafddd, type: 3}
+  vfxManager: {fileID: 11400000, guid: 41b5ed338715d4044bb12a710cd3564e, type: 2}
+  deathVFX: explosion

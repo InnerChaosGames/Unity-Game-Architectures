@@ -3,31 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-[CreateAssetMenu(menuName = "Audio/Sound Manager", fileName ="Audio Manager")]
-public class AudioManagerSO : ScriptableObject
+namespace Architectures.ScriptableObjects
 {
-    private IObjectPool<AudioSource> audioSourcePool;
-
-    private static AudioManagerSO instance;
-    public static AudioManagerSO Instance
+    [CreateAssetMenu(menuName = "Managers/Audio Manager", fileName = "Audio Manager")]
+    public class AudioManagerSO : ScriptableObject
     {
-        get
+        [SerializeField]
+        private float soundVolume;
+        [SerializeField]
+        private List<AudioClip> audioClips = new List<AudioClip>();
+        [SerializeField]
+        private List<string> clipNames = new List<string>();
+
+
+        public AudioSource SoundObject;
+
+        public void PlaySFXClip(string clipName, Vector3 soundPos)
         {
-            if (instance == null)
-            {
-                instance = Resources.Load<AudioManagerSO>("Sound Manager");
-            }
-            return instance;
+            var audio = Instantiate(SoundObject, soundPos, Quaternion.identity);
+
+            var clip = audioClips[clipNames.IndexOf(clipName)];
+            audio.clip = clip;
+            audio.volume = soundVolume;
+            audio.Play();
         }
-    }
-
-    public AudioSource SoundObject;
-
-    public static void PlaySFXClip(AudioClip clip, Vector3 soundPos, float volume)
-    {
-        var audio = Instantiate(Instance.SoundObject, soundPos, Quaternion.identity);
-
-        audio.clip = clip;
-        audio.Play();
     }
 }
