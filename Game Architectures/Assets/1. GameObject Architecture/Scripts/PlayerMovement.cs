@@ -27,7 +27,7 @@ namespace Architectures.GameObjectComponent
         private void FixedUpdate()
         {
             movement = new Vector2(playerInput.Horizontal, playerInput.Vertical);
-            rb.velocity = movement.normalized * Time.fixedDeltaTime * speed;
+            rb.linearVelocity = movement.normalized * Time.fixedDeltaTime * speed;
         }
     }
 }

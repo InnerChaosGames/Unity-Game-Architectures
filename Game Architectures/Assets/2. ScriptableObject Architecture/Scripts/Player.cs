@@ -64,7 +64,7 @@ namespace Architectures.ScriptableObjects
 
         private void FixedUpdate()
         {
-            rb.velocity = movement.normalized * Time.fixedDeltaTime * speed;
+            rb.linearVelocity = movement.normalized * Time.fixedDeltaTime * speed;
         }
     }
 }

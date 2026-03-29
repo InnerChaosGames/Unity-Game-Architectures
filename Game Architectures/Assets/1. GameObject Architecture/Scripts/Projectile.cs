@@ -36,7 +36,7 @@ namespace Architectures.GameObjectComponent
         {
             yield return new WaitForSeconds(lifeSpan);
 
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
 
             objectPool.Release(this);
         }
@@ -50,7 +50,7 @@ namespace Architectures.GameObjectComponent
             {
                 other.TakeDamage(damage);
             }
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
             StopAllCoroutines();
             try
             {
