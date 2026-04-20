@@ -28,7 +28,7 @@ namespace Architectures.ScriptableObjects
         {
             rb = GetComponent<Rigidbody2D>();
             camera = Camera.main;
-            input.MoveEvent += OnMove;
+            //input.MoveEvent += OnMove;
         }
 
         private void OnEnable()
