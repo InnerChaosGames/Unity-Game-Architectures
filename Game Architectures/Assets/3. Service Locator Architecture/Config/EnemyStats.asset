@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatsSO
   <Name>k__BackingField: Enemy
   <Health>k__BackingField: 10
-  <Damage>k__BackingField: 2
+  <Damage>k__BackingField: 4

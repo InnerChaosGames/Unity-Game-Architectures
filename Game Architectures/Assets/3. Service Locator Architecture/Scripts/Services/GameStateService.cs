@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Architectures.ServiceLocatorArchitecture
 {
@@ -13,6 +14,7 @@ namespace Architectures.ServiceLocatorArchitecture
         {
             IsGameOver = false;
             OnGameOverStateChanged?.Invoke(IsGameOver);
+            Debug.Log(IsGameOver);
         }
 
         public void GameOver()
@@ -24,6 +26,7 @@ namespace Architectures.ServiceLocatorArchitecture
 
             IsGameOver = true;
             OnGameOverStateChanged?.Invoke(IsGameOver);
+            Debug.Log(IsGameOver);
         }
     }
 }

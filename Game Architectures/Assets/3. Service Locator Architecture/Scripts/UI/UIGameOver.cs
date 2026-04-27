@@ -12,17 +12,18 @@ namespace Architectures.ServiceLocatorArchitecture
         {
             _gameStateService = ServiceLocator.Get<IGameStateService>();
             _gameStateService.OnGameOverStateChanged += HandleGameStateChanged;
-            HandleGameStateChanged(_gameStateService.IsPlaying);
+            HandleGameStateChanged(_gameStateService.IsGameOver);
         }
 
-        private void HandleGameStateChanged(bool IsGameRunning)
+        private void HandleGameStateChanged(bool IsGameOver)
         {
             if (gameOverScreen == null)
             {
                 return;
             }
+            
 
-            gameOverScreen.SetActive(IsGameRunning == false);
+            gameOverScreen.SetActive(IsGameOver);
         }
     }
 }
